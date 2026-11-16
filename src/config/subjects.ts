@@ -1,6 +1,5 @@
 /**
- * AFPSAT subjects / subtests configuration.
- * Easy to extend or reorder without touching UI components.
+ * AFPSAT subjects configuration.
  */
 
 export type Subject = {
@@ -11,7 +10,6 @@ export type Subject = {
   description: string;
   topics: string[];
   approxItems?: number;
-  color: string;
 };
 
 export const subjects: Subject[] = [
@@ -21,7 +19,7 @@ export const subjects: Subject[] = [
     title: "Verbal Reasoning",
     shortTitle: "Verbal",
     description:
-      "Grammar, vocabulary, sentence organization, analogies, reading comprehension, and correct usage.",
+      "Grammar, vocabulary, sentence organization, analogies, and reading comprehension.",
     topics: [
       "Vocabulary & synonyms/antonyms",
       "Grammar and correct usage",
@@ -31,7 +29,6 @@ export const subjects: Subject[] = [
       "Idioms and common expressions",
     ],
     approxItems: 30,
-    color: "blue",
   },
   {
     id: "numerical",
@@ -39,7 +36,7 @@ export const subjects: Subject[] = [
     title: "Numerical Reasoning",
     shortTitle: "Numerical",
     description:
-      "Arithmetic, percentages, ratios, basic algebra, word problems, speed-distance-time, and data interpretation.",
+      "Arithmetic, percentages, ratios, word problems, and basic algebra.",
     topics: [
       "Basic operations & number sense",
       "Percentages, ratios, proportions",
@@ -49,15 +46,14 @@ export const subjects: Subject[] = [
       "Averages, probability basics",
     ],
     approxItems: 30,
-    color: "emerald",
   },
   {
     id: "abstract",
     slug: "abstract-reasoning",
-    title: "Abstract / Logical Reasoning",
+    title: "Abstract Reasoning",
     shortTitle: "Abstract",
     description:
-      "Figure series, analogies, odd-one-out, letter and number patterns, and non-verbal problem solving.",
+      "Figure series, analogies, odd-one-out, and letter/number patterns.",
     topics: [
       "Figure series & pattern completion",
       "Analogies (shapes / figures)",
@@ -66,24 +62,22 @@ export const subjects: Subject[] = [
       "Logical sequences",
     ],
     approxItems: 35,
-    color: "violet",
   },
   {
     id: "general",
     slug: "general-knowledge",
-    title: "General Knowledge & Information",
-    shortTitle: "General Info",
+    title: "General Knowledge",
+    shortTitle: "General",
     description:
-      "Philippine Constitution, government structure, history, current affairs, and AFP-related knowledge often covered in reviewers.",
+      "Constitution, government, history, and civic knowledge.",
     topics: [
-      "Philippine Constitution (Preamble, Bill of Rights)",
+      "Philippine Constitution",
       "Branches of government",
       "Constitutional commissions & local government",
       "Philippine history & political science",
-      "AFP organization & basic military knowledge",
+      "AFP organization",
       "Current events & civic awareness",
     ],
-    color: "amber",
   },
 ];
 
