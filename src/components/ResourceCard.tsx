@@ -1,9 +1,22 @@
+"use client";
+
+import { track } from "@vercel/analytics";
 import type { Resource } from "@/config/resources";
 import { resourceTypeLabels } from "@/config/resources";
 
 export function ResourceCard({ resource }: { resource: Resource }) {
   const isPdf = resource.type === "pdf";
   const isExternal = resource.url.startsWith("http");
+
+  function handleClick() {
+    if (isPdf) {
+      track("PDF Download", {
+        title: resource.title,
+        id: resource.id,
+        subject: resource.subjects?.[0] ?? "unknown",
+      });
+    }
+  }
 
   return (
     <div className="flex flex-col gap-3 rounded-lg border border-gray-200 bg-white p-5">
@@ -20,6 +33,7 @@ export function ResourceCard({ resource }: { resource: Resource }) {
         <span className="text-xs text-gray-400">{resource.source}</span>
         <a
           href={resource.url}
+          onClick={handleClick}
           {...(isExternal
             ? { target: "_blank", rel: "noopener noreferrer" }
             : { download: true })}

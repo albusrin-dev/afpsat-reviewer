@@ -1,5 +1,6 @@
 import { getActiveResources, resourceTypeLabels } from "@/config/resources";
 import { subjects } from "@/config/subjects";
+import { ResourceLink } from "@/components/ResourceLink";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
@@ -29,7 +30,6 @@ export default function ResourcesPage() {
           <div className="mt-8 space-y-3 sm:hidden">
             {active.map((r) => {
               const isPdf = r.type === "pdf";
-              const isExternal = r.url.startsWith("http");
               return (
                 <div
                   key={r.id}
@@ -44,15 +44,12 @@ export default function ResourcesPage() {
                   <p className="mt-1 text-xs text-gray-400">
                     {subjectNames(r.subjects)} · {r.source}
                   </p>
-                  <a
-                    href={r.url}
-                    {...(isExternal
-                      ? { target: "_blank", rel: "noopener noreferrer" }
-                      : { download: true })}
+                  <ResourceLink
+                    resource={r}
                     className="mt-3 inline-flex h-10 w-full items-center justify-center rounded-md bg-[#1e3a5f] text-sm font-medium text-white hover:bg-[#162d4a]"
                   >
                     {isPdf ? "Download" : "Open"}
-                  </a>
+                  </ResourceLink>
                 </div>
               );
             })}
@@ -71,7 +68,6 @@ export default function ResourcesPage() {
               <tbody className="divide-y divide-gray-100">
                 {active.map((r) => {
                   const isPdf = r.type === "pdf";
-                  const isExternal = r.url.startsWith("http");
                   return (
                     <tr key={r.id} className="bg-white hover:bg-gray-50">
                       <td className="px-4 py-3">
@@ -87,15 +83,12 @@ export default function ResourcesPage() {
                         </span>
                       </td>
                       <td className="px-4 py-3 text-right">
-                        <a
-                          href={r.url}
-                          {...(isExternal
-                            ? { target: "_blank", rel: "noopener noreferrer" }
-                            : { download: true })}
+                        <ResourceLink
+                          resource={r}
                           className="inline-flex items-center rounded-md bg-[#1e3a5f] px-3 py-1.5 text-xs font-medium text-white hover:bg-[#162d4a]"
                         >
                           {isPdf ? "Download" : "Open"}
-                        </a>
+                        </ResourceLink>
                       </td>
                     </tr>
                   );
