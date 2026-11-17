@@ -47,7 +47,12 @@ export default async function SubjectDetailPage({ params }: Props) {
           ))}
         </div>
       ) : (
-        <p className="mt-8 text-sm text-gray-500">Coming soon</p>
+        <div className="mt-8 rounded-lg border border-[#1e3a5f]/20 bg-[#1e3a5f]/5 px-5 py-6">
+          <p className="text-base font-semibold text-[#1e3a5f]">Coming soon</p>
+          <p className="mt-1 text-sm text-gray-600">
+            We&apos;re preparing review materials for this subject. Check back soon.
+          </p>
+        </div>
       )}
 
       {subject.topics.length > 0 && (

@@ -1,5 +1,6 @@
 import Link from "next/link";
 import type { Subject } from "@/config/subjects";
+import { getResourcesBySubject } from "@/config/resources";
 
 const icons: Record<string, React.ReactNode> = {
   verbal: (
@@ -29,12 +30,21 @@ const icons: Record<string, React.ReactNode> = {
 };
 
 export function SubjectCard({ subject }: { subject: Subject }) {
+  const comingSoon = getResourcesBySubject(subject.id).length === 0;
+
   return (
     <Link
       href={`/subjects/${subject.slug}`}
       className="group flex flex-col gap-3 rounded-lg border border-gray-200 bg-white p-5 transition-colors hover:border-[#1e3a5f] hover:bg-slate-50"
     >
-      <span className="text-[#1e3a5f]">{icons[subject.id] ?? icons.verbal}</span>
+      <div className="flex items-start justify-between gap-3">
+        <span className="text-[#1e3a5f]">{icons[subject.id] ?? icons.verbal}</span>
+        {comingSoon && (
+          <span className="shrink-0 rounded-full bg-[#1e3a5f]/10 px-2.5 py-0.5 text-xs font-medium text-[#1e3a5f]">
+            Coming soon
+          </span>
+        )}
+      </div>
       <div>
         <h2 className="text-base font-semibold text-gray-900 group-hover:text-[#1e3a5f]">
           {subject.title}
