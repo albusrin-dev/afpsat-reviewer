@@ -35,7 +35,45 @@ export const resourceTypeLabels: Record<ResourceType, string> = {
 };
 
 export const resources: Resource[] = [
-  // Active
+  // Active — PDFs (served from /public/resources)
+  {
+    id: "pdf-verbal-ability-part-1",
+    title: "Verbal Ability Part 1",
+    description: "Downloadable study reviewer for verbal reasoning.",
+    url: "/resources/verbal-reasoning-verbal-ability-part-1.pdf",
+    type: "pdf",
+    subjects: ["verbal"],
+    source: "AFPSAT Reviewer",
+  },
+  {
+    id: "pdf-numerical-math",
+    title: "Math Reviewer",
+    description: "Downloadable math reviewer for numerical reasoning.",
+    url: "/resources/numerical-reasoning-math.pdf",
+    type: "pdf",
+    subjects: ["numerical"],
+    source: "AFPSAT Reviewer",
+  },
+  {
+    id: "pdf-numerical-number-series",
+    title: "Number Series Review",
+    description: "Number series practice arranged by Leonalyn.",
+    url: "/resources/numerical-reasoning-number-series-arranged-by-leonalyn.pdf",
+    type: "pdf",
+    subjects: ["numerical"],
+    source: "Leonalyn",
+  },
+  {
+    id: "pdf-abstract-test-3",
+    title: "Abstract Reasoning Test 3",
+    description: "Downloadable abstract reasoning practice test.",
+    url: "/resources/abstract-reasoning-test-3.pdf",
+    type: "pdf",
+    subjects: ["abstract"],
+    source: "AFPSAT Reviewer",
+  },
+
+  // Active — YouTube
   {
     id: "leonalyn-verbal-syllogism",
     title: "Verbal Reasoning: Locks, Keys & Bats",
