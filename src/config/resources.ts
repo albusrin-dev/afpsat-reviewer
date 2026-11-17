@@ -37,22 +37,49 @@ export const resourceTypeLabels: Record<ResourceType, string> = {
 export const resources: Resource[] = [
   // Active
   {
+    id: "leonalyn-verbal-syllogism",
+    title: "Verbal Reasoning: Locks, Keys & Bats",
+    description: "Syllogism practice — statements and conclusions.",
+    url: "https://www.youtube.com/watch?v=JkjlJhq4xOQ",
+    type: "youtube",
+    subjects: ["verbal"],
+    source: "Leonalyn",
+  },
+  {
+    id: "leonalyn-verbal-true-false",
+    title: "Verbal Reasoning: True, False, Cannot Say",
+    description: "Logical test with reading passage practice.",
+    url: "https://www.youtube.com/watch?v=D7QNz3EpgwA",
+    type: "youtube",
+    subjects: ["verbal"],
+    source: "Leonalyn",
+  },
+  {
+    id: "leonalyn-verbal-reading",
+    title: "Reading Comprehension Tips",
+    description: "Tips for verbal reasoning reading comprehension.",
+    url: "https://www.youtube.com/watch?v=8lV37fhyZhk",
+    type: "youtube",
+    subjects: ["verbal"],
+    source: "Leonalyn",
+  },
+  {
     id: "leonelyn-numerical",
     title: "Numerical Reasoning for AFPSAT",
-    description: "YouTube playlist by Leonelyn.",
+    description: "YouTube playlist by Leonalyn.",
     url: "https://www.youtube.com/playlist?list=PLzahD1KhmHzqcTYRzUcjBKm5mIIBT7cMH",
     type: "youtube",
     subjects: ["numerical"],
-    source: "Leonelyn",
+    source: "Leonalyn",
   },
   {
     id: "leonelyn-abstract",
     title: "Abstract Reasoning",
-    description: "YouTube playlist by Leonelyn.",
+    description: "YouTube playlist by Leonalyn.",
     url: "https://www.youtube.com/playlist?list=PLzahD1KhmHzqq_hnn0sHDQON6ju2CFO7L",
     type: "youtube",
     subjects: ["abstract"],
-    source: "Leonelyn",
+    source: "Leonalyn",
   },
 
   // Archived — preserved, not shown in the active library
