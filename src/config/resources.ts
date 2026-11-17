@@ -1,6 +1,6 @@
 /**
  * Curated review materials — single source of truth.
- * Preserve all existing links; type drives the library UI label.
+ * Active materials surface in the UI; archived entries are kept but hidden.
  */
 
 export type ResourceType =
@@ -20,6 +20,8 @@ export type Resource = {
   type: ResourceType;
   subjects?: string[];
   source: string;
+  /** When true, kept in config but excluded from the active library UI */
+  archived?: boolean;
 };
 
 export const resourceTypeLabels: Record<ResourceType, string> = {
@@ -33,6 +35,27 @@ export const resourceTypeLabels: Record<ResourceType, string> = {
 };
 
 export const resources: Resource[] = [
+  // Active
+  {
+    id: "leonelyn-numerical",
+    title: "Numerical Reasoning for AFPSAT",
+    description: "YouTube playlist by Leonelyn.",
+    url: "https://www.youtube.com/playlist?list=PLzahD1KhmHzqcTYRzUcjBKm5mIIBT7cMH",
+    type: "youtube",
+    subjects: ["numerical"],
+    source: "Leonelyn",
+  },
+  {
+    id: "leonelyn-abstract",
+    title: "Abstract Reasoning",
+    description: "YouTube playlist by Leonelyn.",
+    url: "https://www.youtube.com/playlist?list=PLzahD1KhmHzqq_hnn0sHDQON6ju2CFO7L",
+    type: "youtube",
+    subjects: ["abstract"],
+    source: "Leonelyn",
+  },
+
+  // Archived — preserved, not shown in the active library
   {
     id: "afp-official",
     title: "Armed Forces of the Philippines Official Website",
@@ -40,6 +63,7 @@ export const resources: Resource[] = [
     url: "https://www.afp.mil.ph",
     type: "official",
     source: "AFP",
+    archived: true,
   },
   {
     id: "topnotcher-afpsat",
@@ -49,6 +73,7 @@ export const resources: Resource[] = [
     type: "practice",
     subjects: ["verbal", "numerical", "abstract"],
     source: "Topnotcher PH",
+    archived: true,
   },
   {
     id: "topnotcher-abstract",
@@ -58,6 +83,7 @@ export const resources: Resource[] = [
     type: "practice",
     subjects: ["abstract"],
     source: "Topnotcher PH",
+    archived: true,
   },
   {
     id: "topnotcher-numerical",
@@ -67,6 +93,7 @@ export const resources: Resource[] = [
     type: "practice",
     subjects: ["numerical"],
     source: "Topnotcher PH",
+    archived: true,
   },
   {
     id: "supertutor-afpsat",
@@ -76,6 +103,7 @@ export const resources: Resource[] = [
     type: "guide",
     subjects: ["verbal", "numerical", "abstract", "general"],
     source: "Super Tutor",
+    archived: true,
   },
   {
     id: "supertutor-general",
@@ -85,6 +113,7 @@ export const resources: Resource[] = [
     type: "notes",
     subjects: ["general"],
     source: "Super Tutor",
+    archived: true,
   },
   {
     id: "pasa-app",
@@ -94,13 +123,16 @@ export const resources: Resource[] = [
     type: "app",
     subjects: ["verbal", "numerical", "abstract", "general"],
     source: "PASA Community",
+    archived: true,
   },
 ];
 
-export function getResourcesBySubject(subjectId: string) {
-  return resources.filter((r) => r.subjects?.includes(subjectId));
+export function getActiveResources() {
+  return resources.filter((r) => !r.archived);
 }
 
-export function getSubjectTitle(subjectId: string, subjects: { id: string; title: string }[]) {
-  return subjects.find((s) => s.id === subjectId)?.title ?? subjectId;
+export function getResourcesBySubject(subjectId: string) {
+  return resources.filter(
+    (r) => !r.archived && r.subjects?.includes(subjectId)
+  );
 }

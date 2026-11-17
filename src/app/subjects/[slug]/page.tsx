@@ -47,9 +47,7 @@ export default async function SubjectDetailPage({ params }: Props) {
           ))}
         </div>
       ) : (
-        <p className="mt-8 text-sm text-gray-500">
-          No materials listed for this subject yet.
-        </p>
+        <p className="mt-8 text-sm text-gray-500">Coming soon</p>
       )}
 
       {subject.topics.length > 0 && (
